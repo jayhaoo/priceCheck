@@ -1,15 +1,21 @@
 import sys
 import os.path
 from os import path
+import urllib.request
+
+def get_http():
+	contents = urllib.request.urlopen("https://www.adidas.com/us/ultraboost-4.0-dna-shoes/FY9318.html").read()
+	print(contents)
 
 def parse_text_file(textFile):
 	print('Textfile: ', textFile)
 	f = open(textFile, 'r')
-	for item in f:
-		print(item)
-		items = item.split(' ')
-		print(items[0])
-		print(len(items))
+	#for item in f:
+		#print(item)
+		#items = item.split(' ')
+		#print(items[0])
+		#print(len(items))
+
 
 def main():
 	if len(sys.argv) != 2:
@@ -29,8 +35,8 @@ def main():
 		print('ERROR: ', textFile, ' is not a text file')
 		quit()
 
-	parse_text_file(textFile)
-
+	#parse_text_file(textFile)
+	#get_http()
 
 if __name__ == "__main__":
 	main()
