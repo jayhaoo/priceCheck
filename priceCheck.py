@@ -14,8 +14,11 @@ def adidas_get_price(url):
 	price = htmlPrice[0]
 	print(price)
 
-def check_text_file(textFileInput):
-	print(textFileInput[0])
+def check_text_file_input(textFileInput):
+	#print(textFileInput[0])
+	if len(textFileInput) != 3:
+		print('[ERROR]: Invalid syntax on line. Should be \'brand\' \'url\' \'price\'')
+		return False
 	if textFileInput[0] not in brands:
 		print('[ERROR]: \'',textFileInput[0], '\' not supported brand')
 		return False
@@ -23,13 +26,11 @@ def check_text_file(textFileInput):
 	return True
 
 def parse_text_file(textFile):
+	# I can make this the multithreaded part
 	f = open(textFile, 'r')
 	for item in f:
-		items = item.split(' ')
-		if len(items) != 3:
-			print('[ERROR]: Invalid syntax on line. Should be \'brand\' \'url\' \'price\'')
-			continue
-		check_text_file(items)
+		if check_text_file_input(item.split(' ')):
+			print('Able to parse given input')
 
 def main():
 	if len(sys.argv) != 2:
