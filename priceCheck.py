@@ -30,18 +30,21 @@ def separate_brands(brand, url, price, product):
 	priceOnPage = 0
 	if brand == 'adidas':
 		priceOnPage = adidas_get_price(url, product)
+
 	if priceOnPage != -1:
 		if int(priceOnPage) < price:
 			print('[SUCCESS]: ', product, ' price dropped from ', price, ' -> ', priceOnPage)
 		else:
-			print('[CHECKED]: ', product, ' successfully searched and same price')
+			print('[CHECKED]: ', product)
 
 def check_text_file_input(textFileInput):
+	if len(textFileInput) == 1:
+		return False
 	if len(textFileInput) != 4:
 		print('[ERROR]: Invalid syntax on line. Should be \'brand\' \'url\' \'price\' \'product name\'')
 		return False
 	elif textFileInput[0] not in supportedBrands:
-		print('[ERROR]: \'',textFileInput[0].replace(' ', ''), '\' not supported brand')
+		print('[ERROR]: \'',textFileInput[0], '\' not supported brand')
 		return False
 	try:
 		int(textFileInput[2])
