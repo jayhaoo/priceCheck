@@ -14,4 +14,6 @@ Currently this only does adidas.
 The way this script works is that it utilizes the beautifulsoup package which searches the html response for the div tags.
 Websites have different formats.
 For example, adidas has the price under the div class 'gl-price-item'. 
-To support other brand I will need to check the other websites for the class_ tags. 
+To support other brand I will need to check the other websites for the class_ tags
+Also possibly add a pytest file to check all the functions.
+Great way to learn and practice pytests.
